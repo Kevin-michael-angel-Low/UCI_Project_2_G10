@@ -47,12 +47,25 @@ def welcome():
     """List all available api routes."""
     return (
         f"Available Routes:<br/>"
-        f"/api/v1.0/hospital_name<br/>"
-        f"/api/v1.0/covid_data"
+        f"/json_file<br/>"
+
+        # f"/longitude<br/>"
+        # f"/hospital_name<br/>"
+        # f"/week_data_collected<br/>"
+        # f"/state<br/>"
+        # f"/zip<br/>"
+        # f"/city<br/>"
+        # f"/total_beds_available<br/>"
+        # f"/total_covid_patients<br/>"
+        # f"/total_beds_in_use<br/>"
+        # f"/percent_covid_patients<br/>"
+        # f"/percent_capacity_full<br/>"
+        # f"/latitude<br/>"
+        # f"/longitude<br/>"
     )
 
-
-@app.route("/api/v1.0/hospital_name")
+# Hospital name, week, lat, long
+@app.route("/hospital_name")
 def names():
     # Create our session (link) from Python to the DB
     session = Session(engine)
@@ -68,6 +81,30 @@ def names():
 
     return jsonify(all_names)
 
+# city, Hospital name, week, lat, long, percent covid patients, percent capacity full, 
+@app.route("/json_file")
+def json_file():
+    session = Session(engine)
+
+    results = session.query(covid_data.city, covid_data.hospital_name, covid_data.latitude,
+    covid_data.longitude, covid_data.week_data_collected, covid_data.percent_covid_patients,
+    covid_data.percent_capacity_full).all()
+
+    session.close()
+
+    all_data = []
+    for city, hospital_name, longitude, latitude, week_data_collected, percent_covid_patients, percent_capacity_full in results:
+        data_dict = {}
+        data_dict['city'] = city
+        data_dict['hospital'] = hospital_name
+        data_dict['longitude'] = longitude
+        data_dict['latitude'] = latitude
+        data_dict['date'] = week_data_collected
+        data_dict['percent covid patients'] = percent_covid_patients
+        data_dict['percent capacity full'] = percent_capacity_full
+        all_data.append(data_dict)
+    
+    return jsonify(all_data)
 
 # @app.route("/api/v1.0/passengers")
 # def passengers():
@@ -92,5 +129,5 @@ def names():
 #     return jsonify(all_passengers)
 
 
-# if __name__ == '__main__':
-#     app.run(debug=True)
+if __name__ == '__main__':
+    app.run(debug=True)
