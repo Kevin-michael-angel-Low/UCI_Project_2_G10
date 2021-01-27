@@ -6,7 +6,7 @@ from sqlalchemy.orm import Session
 from sqlalchemy import create_engine, func
 from sqlalchemy import MetaData
 
-from flask import Flask, jsonify
+from flask import Flask, jsonify, render_template
 
 
 
@@ -156,6 +156,10 @@ def json_date():
 #         all_passengers.append(passenger_dict)
 
 #     return jsonify(all_passengers)
+
+@app.route("/covid_site")
+def home_page():
+    return render_template('index.html', embed='string name!')
 
 
 if __name__ == '__main__':

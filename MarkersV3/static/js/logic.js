@@ -1,6 +1,22 @@
 //put data here//
-var data=d3.json("json_simple.json");
-console.log(data);
+// var data=d3.json("json_simple.json");
+// console.log(data[0]);
+
+// fetch("json_simple.json")
+//   .then(response => response.json())
+//   .then(json => console.log(json));
+
+// $.getJSON("json_simple.json", function( json ) {
+//   console.log(json);
+//  });
+
+
+// const data = require("json_simple.json");
+// console.log(data);
+var myJSON = "json_simple.json";
+
+var myObject = JSON.parse(myJSON);
+console.log(myObject);
 var cdata2 = [
 
   {
