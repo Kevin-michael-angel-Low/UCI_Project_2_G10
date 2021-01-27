@@ -4,6 +4,10 @@
   <meta charset="UTF-8">
   <title>COVID Hospitalizations CA v FL</title>
 
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+  <link rel="stylesheet" href="static/css/style.css">
+
   <!-- Google Font -->
   <link href="https://fonts.googleapis.com/css?family=Sanchez" rel="stylesheet">
 
@@ -19,12 +23,77 @@
   <!-- Our CSS -->
   <link rel="stylesheet" type="text/css" href="static/css/style.css">
 </head>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+
+  <!-- https://www.uniper.energy/services/sites/default/files/2020_uniper_stage_anim.gif-->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
 <body>
 
-  <!-- The div that holds our map -->
-  <div id="map-id"></div>
 
+
+  <style>
+    body {
+      background-image: url('https://www.uniper.energy/services/sites/default/files/2020_uniper_stage_anim.gif');
+    }
+    </style>
+
+  <style>
+    .Title {
+      font-family: Sanchez, serif;
+      background-color: rgba(169, 231, 255, 0.692);
+      color: black;
+      border: 2px solid black;
+      margin: 20px;
+      padding: 20px;
+    }
+    </style>
+<div class="Title">
+  <div class="col-md-12">
+    
+    <h1>COVID-19 Hospitalizations - CA vs FL (from July 2020 - January 2021)</h1>
+    <h3>This is a map through time that visualizes hospital capacities due to COVID in California and in Florida throughout the last year.</h3>
+    <h6>Using the drop-down list, you can see snapshots of hospital capacities. </h6>
+  </div>
+</div>
+
+<style>
+  .main-nav-item {
+    font-family: Sanchez, serif;
+    background-color: rgba(255, 255, 255, 0.836);
+    color: black;
+    border: 2px solid black;
+    margin: 20px;
+    padding: 20px;
+  }
+  </style>
+<ul id="main-nav">
+  <li class="main-nav-item">
+      <a href="#" class="https://covid19.who.int/?gclid=Cj0KCQiAmL-ABhDFARIsAKywVaeKw9pVUbv4zcMVswQD2t-Ix64ebHY7hT1_9Dmy5JgxN8LWVOaSU04aAuFSEALw_wcB">WHO Coronavirus Disease (COVID-19) Dashboard</a>
+  </li>
+  <li class="main-nav-item">
+    <a href="#" class="Umain-nav-tab">Information Link</a>
+</li>
+</ul>
+
+
+
+<!-- LEGEND CODE -->
+<!-- <ul class="legend">
+  <p>Hospital Capacity Legend</p>
+  <li>  <span class="p25"></span> Less than 25%</li>
+  <li>  <span class="p50"></span> Less than 50% </li>
+  <li>  <span class="p75"></span> Less than 75%</li>
+  <li>   <span class="p100"></span> Less than 100%</li>
+  <li>   <span class="over100"></span> Above 100% </li>
+</ul> -->
+
+  <!-- The div that holds our map -->
+
+  <div id="map-id"></div>
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.0.1/lib/anime.min.js"></script>
+  <script src="static/js/anime.min.js"></script>
   <!-- D3 -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.5.0/d3.min.js"></script>
 
@@ -44,18 +113,385 @@
 
   <!-- API Key -->
   <script type="text/javascript" src="static/js/config.js"></script>
-
+ 
   <!-- Our JavaScript -->
   <script type="text/javascript" src="static/js/logic.js"></script>
 
-  <!-- Leaflet Side By Side -->
-  <!-- <script src="leaflet-side-by-side.js"></script>
+ 
+  <style>
+    .analysis {
+      font-family: Sanchez, serif;
+      background-color: rgba(169, 231, 255, 0.692);
+      color: black;
+      border: 2px solid black;
+      margin: 20px;
+      padding: 20px;
+    }
+    </style>
 
-  <select id="menu" onchange="updateOptions(this)">
-    <option value="option1" data-path="option1">option1</option>
-    <option value="option2" data-path="option2">option2</option>
-</select><br> -->
+  <div class="analysis">
+    <div class="col-md-15">
+      <h3 align=center>CALIFORNIA AND FLORIDA COVID RESTRICTIONS TIMELINE</h3>
+    </div>
+</div>
+
+
+
+
+
+
+
+<div class="container">
+  <div class="timeline">
+    <div class="timeline-month">
+      March, 2020
+    </div>
+    <div class="timeline-section">
+      <div class="timeline-date">
+        March 13
+      </div>
+      <div class="row">
+        <div class="col-sm-4">
+          <div class="timeline-box">
+            <div class="box-title">
+              <i class="fa fa-asterisk text-success" aria-hidden="true"></i> FLORIDA
+            </div>
+            <div class="box-content">
+              <a class="btn btn-xs btn-default pull-right">The Florida Department of Education closed schools across the state for two weeks effective March 16</a>
+            </div>
+          </div>
+        </div>
+        <div class="timeline-section">
+          <div class="timeline-date">
+            March 19
+          </div>
+          <div class="row">
+            <div class="col-sm-4">
+              <div class="timeline-box">
+                <div class="box-title">
+                  <i class="fa fa-asterisk text-success" aria-hidden="true"></i> CALIFORNIA
+                </div>
+                <div class="box-content">
+                  <a class="btn btn-xs btn-default pull-right">an Executive Order and Public Health Order directed all Californians to stay home except to go to an essential job or to shop for essential needs.</a>
+                </div>
+              </div>
+            </div>
+            <div class="timeline-section">
+              <div class="timeline-date">
+                March 24
+              </div>
+              <div class="row">
+                <div class="col-sm-4">
+                  <div class="timeline-box">
+                    <div class="box-title">
+                      <i class="fa fa-asterisk text-success" aria-hidden="true"></i> FLORIDA
+                    </div>
+                    <div class="box-content">
+                      <a class="btn btn-xs btn-default pull-right">Gov. Ron DeSantis ordered travelers flying into Florida from New York, New Jersey, and Connecticut to self-quarantine for two weeks. Those preforming health, military, or emergency duties were exempt. Travelers were required to inform residents with whom they had direct contact if they traveled to an area with a widespread outbreak of COVID-19. Failure to comply could have resulted in fines up to $500 and jail time up to 60 days
+                    </div>
+                  </div>
+                </div>
+                </div>
+            <div class="timeline-section">
+              <div class="timeline-date">
+                March 24
+              </div>
+              <div class="row">
+                <div class="col-sm-4">
+                  <div class="timeline-box">
+                    <div class="box-title">
+                      <i class="fa fa-asterisk text-success" aria-hidden="true"></i> FLORIDA
+                    </div>
+                    <div class="box-content">
+                      <a class="btn btn-xs btn-default pull-right">Gov. Ron DeSantis ordered travelers flying into Florida from New York, New Jersey, and Connecticut to self-quarantine for two weeks. Those preforming health, military, or emergency duties were exempt. Travelers were required to inform residents with whom they had direct contact if they traveled to an area with a widespread outbreak of COVID-19. Failure to comply could have resulted in fines up to $500 and jail time up to 60 days
   
+                    </div>
+          
+                  </div>
+                </div>
+<div class="container">                
+  <div class="timeline">
+    <div class="timeline-month">
+      May, 2020</div>
+      <div class="timeline-section">
+        May 4</div>
+      <div class="row">
+        <div class="col-sm-4">
+          <div class="timeline-box">
+            <div class="box-title">
+              <i class="fa fa-asterisk text-success" aria-hidden="true"></i> FLORIDA
+            </div>
+            <div class="box-content">
+              <a class="btn btn-xs btn-default pull-right">Gov. Ron Desantis' April 29 executive order allowed restaurants, retail stores, libraries, and museums to open to 25% of their building occupancy under certain guidelines Monday. The order also allowed elective medical procedures under certain conditions. These allowances did not apply to Broward, Miami-Dade, or Palm Beach counties. The stay-at-home order expired Monday. Florida is a Republican trifecta.
+
+            </div>
+  
+          </div>
+        </div>
+<div class="container">       
+  <div class="timeline">
+    <div class="timeline-month">June, 2020</div>
+        <div class="timeline-section">
+          <div class="timeline-date">
+            June 3
+          </div>
+          <div class="row">
+            <div class="col-sm-4">
+              <div class="timeline-box">
+                <div class="box-title">
+                  <i class="fa fa-asterisk text-success" aria-hidden="true"></i> FLORIDA
+                </div>
+                <div class="box-content">
+                  <a class="btn btn-xs btn-default pull-right">Gov. Ron DeSantis announced that beginning on June 5 bars may reopen at 50% capacity inside and full capacity outside, with service only for seated patrons. Movie theaters and bowling alleys can reopen at 50% capacity on that day. The new rules apply to all counties except Miami-Dade, Broward, and Palm Beach.
+  
+                </div>
+      
+              </div>
+            </div>
+            <div class="timeline-section">
+              <div class="timeline-date">
+                June 18
+              </div>
+              <div class="row">
+                <div class="col-sm-4">
+                  <div class="timeline-box">
+                    <div class="box-title">
+                      <i class="fa fa-asterisk text-success" aria-hidden="true"></i> CALIFORNIA
+                    </div>
+                    <div class="box-content">
+                      <a class="btn btn-xs btn-default pull-right">The state issued a face-covering guidance, mandating people wear masks indoors and when social distancing wasn’t possible outdoors.
+      
+                    </div>
+          
+                  </div>
+                </div>
+<div class="container">       
+  <div class="timeline">
+      <div class="timeline-month">July, 2020</div>
+                <div class="timeline-section">
+                  <div class="timeline-date">
+                    July 1
+                  </div>
+                  <div class="row">
+                    <div class="col-sm-4">
+                      <div class="timeline-box">
+                        <div class="box-title">
+                          <i class="fa fa-asterisk text-success" aria-hidden="true"></i> CALIFORNIA
+                        </div>
+                        <div class="box-content">
+                          <a class="btn btn-xs btn-default pull-right">Newsom ordered a three-week closure of bars, movie theaters, museums, wineries and indoor restaurant dining in Los Angeles and 18 other counties.
+          
+                        </div>
+              
+                      </div>
+                    </div>
+                  <!-- <div class="timeline-section">
+                  <div class="timeline-date">
+                    July 1
+                  </div> -->
+                  <div class="row">
+                    <div class="col-sm-4">
+                      <div class="timeline-box">
+                        <div class="box-title">
+                          <i class="fa fa-asterisk text-success" aria-hidden="true"></i> CALIFORNIA
+                        </div>
+                        <div class="box-content">
+                          <a class="btn btn-xs btn-default pull-right">Newsom ordered a three-week closure of bars, movie theaters, museums, wineries and indoor restaurant dining in Los Angeles and 18 other counties.
+          
+                        </div>
+              
+                      </div>
+                    </div>
+<div class="container">       
+  <div class="timeline">
+    <div class="timeline-month">August, 2020</div>
+                    <div class="timeline-section">
+                      <div class="timeline-date">
+                        August 6
+                      </div>
+                      <div class="row">
+                        <div class="col-sm-4">
+                          <div class="timeline-box">
+                            <div class="box-title">
+                              <i class="fa fa-asterisk text-success" aria-hidden="true"></i> FLORIDA
+                            </div>
+                            <div class="box-content">
+                              <a class="btn btn-xs btn-default pull-right">Gov. Ron DeSantis rescinded the executive order requiring travelers from Connecticut, New Jersey, and New York to self-quarantine for 14 days upon arrival.
+              
+                            </div>
+                  
+                          </div>
+                        </div>
+<div class="container">       
+  <div class="timeline">
+    <div class="timeline-month">September, 2020</div>
+                        <div class="timeline-section">
+                          <div class="timeline-date">
+                            September 8
+                          </div>
+                          <div class="row">
+                            <div class="col-sm-4">
+                              <div class="timeline-box">
+                                <div class="box-title">
+                                  <i class="fa fa-asterisk text-success" aria-hidden="true"></i> FLORIDA
+                                </div>
+                                <div class="box-content">
+                                  <a class="btn btn-xs btn-default pull-right">On Sept. 8, Palm Beach County entered Phase Two of reopening. Movie theaters, libraries, museums, and indoor entertainment venues were allowed to reopen at reduced capacity.
+                  
+                                </div>
+                      
+                              </div>
+                            </div>
+                            <div class="timeline-section">
+                              <div class="timeline-date">
+                                September 25
+                              </div>
+                              <div class="row">
+                                <div class="col-sm-4">
+                                  <div class="timeline-box">
+                                    <div class="box-title">
+                                      <i class="fa fa-asterisk text-success" aria-hidden="true"></i> FLORIDA
+                                    </div>
+                                    <div class="box-content">
+                                      <a class="btn btn-xs btn-default pull-right">Gov. Ron DeSantis announced on Sept. 25 that Florida would enter Phase 3 of reopening effective immediately, allowing bars and restaurants to operate at full capacity. The order overrides local ordinances unless cities can justify bar or restaurant closures on health or economic grounds.
+                      
+                                    </div>
+                          
+                                  </div>
+                                </div>
+<div class="container">       
+  <div class="timeline">
+    <div class="timeline-month">November, 2020</div>
+                                </div>
+                                <div class="timeline-section">
+                                  <div class="timeline-date">
+                                    November 13
+                                  </div>
+                                  <div class="row">
+                                    <div class="col-sm-4">
+                                      <div class="timeline-box">
+                                        <div class="box-title">
+                                          <i class="fa fa-asterisk text-success" aria-hidden="true"></i> CALIFORNIA
+                                        </div>
+                                        <div class="box-content">
+                                          <a class="btn btn-xs btn-default pull-right">The governors of California, Washington and Oregon issue an advisory recommending against non-essential travel as the holiday season looms and the US sees a spike in COVID-19 cases. The advisory is merely a recommendation, not a requirement.
+                                        </div>
+                                      </div>
+                                    </div>
+                                    <div class="timeline-section">
+                                      <div class="timeline-date">
+                                        November 22
+                                      </div>
+                                      <div class="row">
+                                        <div class="col-sm-4">
+                                          <div class="timeline-box">
+                                            <div class="box-title">
+                                              <i class="fa fa-asterisk text-success" aria-hidden="true"></i> CALIFORNIA
+                                            </div>
+                                            <div class="box-content">
+                                              <a class="btn btn-xs btn-default pull-right">More than 1 million people passed through TSA security checkpoints today making it the busiest travel day since the pandemic began. A total of 3 million people were screened over the weekend from Friday, November 20 to Sunday, November 22.
+                              
+                                            </div>
+                                  
+                                          </div>
+                                        </div>
+                                        <div class="timeline-section">
+                                          <div class="timeline-date">
+                                            November 30
+                                          </div>
+                                          <div class="row">
+                                            <div class="col-sm-4">
+                                              <div class="timeline-box">
+                                                <div class="box-title">
+                                                  <i class="fa fa-asterisk text-success" aria-hidden="true"></i> CALIFORNIA
+                                                </div>
+                                                <div class="box-content">
+                                                  <a class="btn btn-xs btn-default pull-right">Los Angeles County issues a new stay-at-home order that prohibits people from gathering with anyone outside of their household either in public or private.
+                                  
+                                                </div>
+                                      
+                                              </div>
+                                            </div>
+<div class="container">       
+  <div class="timeline">
+    <div class="timeline-month">December, 2020</div>
+                                            </div>
+                                            <div class="timeline-section">
+                                              <div class="timeline-date">
+                                                December 3
+                                              </div>
+                                              <div class="row">
+                                                <div class="col-sm-4">
+                                                  <div class="timeline-box">
+                                                    <div class="box-title">
+                                                      <i class="fa fa-asterisk text-success" aria-hidden="true"></i> CALIFORNIA
+                                                    </div>
+                                                    <div class="box-content">
+                                                      <a class="btn btn-xs btn-default pull-right">The Regional Stay Home Order triggers additional restrictions after a region has been announced to have less than 15% ICU availability. It prohibits private gatherings of any size, closes sector operations except for critical infrastructure and retail, and requires 100% masking (with certain exceptions as indicated in guidance for use of face coverings) and physical distancing.
+                                      
+                                                    </div>
+                                          
+                                                  </div>
+                                                </div>
+<div class="container">       
+  <div class="timeline">
+    <div class="timeline-month">January, 2021</div>
+                                                <div class="timeline-section">
+                                                  <div class="timeline-date">
+                                                    January 9
+                                                  </div>
+                                                  <div class="row">
+                                                    <div class="col-sm-4">
+                                                      <div class="timeline-box">
+                                                        <div class="box-title">
+                                                          <i class="fa fa-asterisk text-success" aria-hidden="true"></i> CALIFORNIA
+                                                        </div>
+                                                        <div class="box-content">
+                                                          <a class="btn btn-xs btn-default pull-right">The state announced today it has extended the stay-at-home order in the Bay area because ICU availability remains below the threshold of 15%.
+                                          
+                                                        </div>
+                                              
+                                                      </div>
+                                                    </div>
+                                                
+
+<!-- TIMELINE INFORMATION-->
+<!-- <style>
+  .info {
+    font-family: Sanchez, serif;
+    background-color: rgba(226, 248, 176, 0.692);
+    color: black;
+    border: 2px solid black;
+    margin: 20px;
+    padding: 20px;
+  }
+  </style>
+
+  <style>
+    .row {
+      background-color: rgba(169, 231, 255, 0.692);
+      color: black;
+      border: 2px solid black;
+      margin: 20px;
+      padding: 20px;
+    }
+    </style> -->
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+<div id="mapid"></div> 
+
+
 </body>
 
 </html>
