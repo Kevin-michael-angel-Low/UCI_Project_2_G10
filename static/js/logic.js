@@ -140405,7 +140405,7 @@
 
   
   // Add our 'lightmap' tile layer to the map
-  lightmap.addTo(map);
+  //lightmap.addTo(map);
   
   // Create an overlays object to add to the layer control
   var overlays = {
