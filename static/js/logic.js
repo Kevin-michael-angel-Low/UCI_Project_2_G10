@@ -140385,23 +140385,23 @@
   }).addTo(map);
   
   
-  // LEGEND
+  // // LEGEND
   
-  var legend = L.control({ position: "topright" });
+  // var legend = L.control({ position: "topright" });
   
-  legend.onAdd = function(map) {
-    var div = L.DomUtil.create("div", "legend");
-    div.innerHTML += "<h4>Hospital Capacity Legend</h4>";
-    div.innerHTML += '<i style="background: green"></i><span>Less than 25%</span><br>';
-    div.innerHTML += '<i style="background: yellow"></i><span>Less than 50%</span><br>';
-    div.innerHTML += '<i style="background: orange"></i><span>Less than 75%</span><br>';
-    div.innerHTML += '<i style="background: red"></i><span>Less than 100%</span><br>';
-    div.innerHTML += '<i style="background: #8B0000"></i><span>Above 100%</span><br>';
+  // legend.onAdd = function(map) {
+  //   var div = L.DomUtil.create("div", "legend");
+  //   div.innerHTML += "<h4>Hospital Capacity Legend</h4>";
+  //   div.innerHTML += '<i style="background: green"></i><span>Less than 25%</span><br>';
+  //   div.innerHTML += '<i style="background: yellow"></i><span>Less than 50%</span><br>';
+  //   div.innerHTML += '<i style="background: orange"></i><span>Less than 75%</span><br>';
+  //   div.innerHTML += '<i style="background: red"></i><span>Less than 100%</span><br>';
+  //   div.innerHTML += '<i style="background: #8B0000"></i><span>Above 100%</span><br>';
     
-    return div;
-  };
+  //   return div;
+  // };
   
-  legend.addTo(map);
+  // legend.addTo(map);
 
   
   // Add our 'lightmap' tile layer to the map
@@ -140500,7 +140500,7 @@
           }
   
       else {
-            color = "#8B0000";
+            color = "#800080";
           }
     
     L.circle(cdata2[i].location, {
@@ -140525,12 +140525,13 @@ legend.onAdd = function(map) {
   div.innerHTML += '<i style="background: yellow"></i><span>Less than 50%</span><br>';
   div.innerHTML += '<i style="background: orange"></i><span>Less than 75%</span><br>';
   div.innerHTML += '<i style="background: red"></i><span>Less than 100%</span><br>';
-  div.innerHTML += '<i style="background: #8B0000"></i><span>Above 100%</span><br>';
+  div.innerHTML += '<i style="background: #800080"></i><span>Above 100%</span><br>';
   
   return div;
 };
 
 legend.addTo(map);
+
 
 // TIMELINE FUNCTION
 (function() {
