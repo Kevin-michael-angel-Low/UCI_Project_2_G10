@@ -672,3 +672,18 @@ text-shadow:1px 1px 1px rgba(0,0,0,0.3);
       padding: 10px !important;
   }
 }
+
+
+/*- Press and hold to explode layers*/
+
+script.
+	window.canvasOptions = {
+		autoClear: true,
+		autoCompensate: false,
+		autoPushPop: true,
+		canvas: true,
+		centered: true,
+		desynchronized: false,
+		width: null,
+		height: null
+	};
