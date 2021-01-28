@@ -13,7 +13,7 @@ from flask import Flask, jsonify, render_template
 #################################################
 # Database Setup
 #################################################
-rds_connection_string = "postgres:postgres@localhost:5432/project2_db"
+rds_connection_string = "Platinum9823#:postgres#@localhost:5432/project2_db"
 engine = create_engine(f'postgresql://{rds_connection_string}')
 
 
